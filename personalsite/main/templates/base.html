@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Brian Check{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="container">
+            <!-- Left side: Profile photo + site title -->
+            <div class="header-left">
+                <img 
+                    src="{% static 'images/brian.png' %}" 
+                    alt="Photo of Brian" 
+                    class="profile-pic"
+                >
+                <div class="logo">
+                    <a href="{% url 'home' %}">Brian Check</a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'projects' %}">Projects</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            {% block content %}
+            <!-- Page-specific content goes here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <p class="footer-title">Contact Me</p>
+            <ul class="footer-links">
+                <li>
+                    <!-- LinkedIn icon -->
+                    <a href="https://linkedin.com/in/brian-check" target="_blank">
+                        <img 
+                          src="{% static 'images/linkedin.png' %}" 
+                          alt="LinkedIn" 
+                          class="social-icon"
+                        >
+                    </a>
+                </li>
+                <li><a href="mailto:bcheck@stanford.edu">bcheck@stanford.edu</a></li>
+                <li><a href="tel:+17036259432">(703) 625-9432</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
