@@ -155,3 +155,89 @@ footer {
 .social-icon:hover {
     filter: brightness(0.8);
 }
+
+
+/* 
+   Projects Section Styles
+   Make sure these selectors aren't overridden elsewhere. 
+   If you have existing styles, remove or comment them out 
+   so there's no conflict.
+*/
+
+/* Container around the grid */
+.projects-section {
+    padding: 40px 0;
+}
+
+/* Page title for the Projects page */
+.projects-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* The responsive grid */
+.projects-grid {
+    display: grid;
+    /* At minimum, each card is 250px wide; it expands if space allows */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* The card holding each project */
+.project-card {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: visible;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect: lifts the card slightly */
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* The project image is constrained to a set height */
+.project-img {
+    width: 100%;
+    height: 180px;      /* Adjust as desired (e.g. 200px, 150px) */
+    object-fit: cover;  /* Crops the image if it's too large */
+    display: block;
+}
+
+/* Title inside the card */
+.project-card h3 {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+/* Description text */
+.project-card p {
+    margin: 0 10px 15px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* "View Details" button/link */
+.btn-project {
+    margin-top: auto;     /* Pushes the button to the bottom if the card grows */
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #3498db; /* Accent color */
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+.btn-project:hover {
+    background-color: #2980b9;
+}
