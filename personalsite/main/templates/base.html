@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Brian Check{% endblock %}</title>
@@ -14,7 +15,6 @@
       rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <!-- Header -->
@@ -36,9 +36,8 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'resume' %}">Resume</a></li>
                     <li><a href="{% url 'projects' %}">Projects</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </nav>
         </div>
