@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ofeid%=o*t6g$5_^czv$%&qot9yga4r&2pp1jcj^8&-of(hb+l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bcbets.net', 'www.bcbets.net', '3.136.7.167', 'localhost', '127.0.0.1']
 
 
 # Application definition
