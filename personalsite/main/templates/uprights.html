@@ -2,9 +2,37 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    Uprights
 {% endblock title %}
 
 {% block content %}
-    <h1>24e Uprights Lead - Carnegie Mellon Racing</h1>
+    <h1>24e Uprights Lead<br>Carnegie Mellon Racing</h1>
+
+    <section class="project-section">
+        <p>
+            I led the complete redesign of the uprights to integrate lightweight carbon fiber wheels into our 4-wheel-drive hub motor powertrain. The uprights form the critical connection between the powertrain and the suspension, supporting brake calipers, motors, and bearings (which, in turn, support the wheel hubs), and ultimately linking the powertrain assembly to the suspension and chassis.
+        </p>
+        <p>
+            Our redesign shifted from an internal mounting configuration to one in which the hubs mount externally around the upright. This change necessitated a two-part design (green and pink components in the image below), replacing the previous single-piece configuration.
+        </p>
+        <p>
+            Through detailed hand calculations and finite element analysis, I achieved a 5% mass reduction in the uprights while enhancing the design for manufacturability. Overall, the powertrain's mass was reduced by 15% (approximately 5.6 kg) across all four wheels—a significant improvement considering that unsprung mass (mass not supported by the suspension) greatly impacts vehicle performance.
+        </p>
+        <p>
+            The parts were 5-axis CNC machined by a sponsor. I produced detailed drawings and worked closely with the sponsor to ensure that the parts were toleranced appropriately.
+        </p>
+        <p>
+            Beyond the structural improvements, the project involved close collaboration with the suspension and vehicle dynamics teams to optimize attachment points and maintain the desired vehicle dynamics. This effort also helped improve interteam communication compared to previous years.
+        </p>
+        
+        
+        <div class="photo-grid photo-grid--2x3">
+            <img src="{% static 'images/Uprights/FrontUpright.png' %}" alt="Front Upright">
+            <img src="{% static 'images/Uprights/RearUpright.png' %}" alt="Rear Upright">
+            <img src="{% static 'images/Uprights/UprightGIF.gif' %}" alt="Upright GIF">
+            <img src="{% static 'images/Uprights/Deformation.png' %}" alt="FEA Deformation">
+            <img src="{% static 'images/UprightOil.jpg' %}" alt="Upright with Oil">
+            <img src="{% static 'images/Uprights/UprightMounted.PNG' %}" alt="Camber Plates">
+        </div>
+    </section>
 {% endblock content %}
