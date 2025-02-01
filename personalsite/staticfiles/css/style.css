@@ -186,7 +186,6 @@ footer {
 
 /* The card holding each project */
 .project-card {
-    padding: 20px;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -212,7 +211,8 @@ footer {
 
 /* Title inside the card */
 .project-card h3 {
-    margin: 15px 0 10px 15px 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 1.2rem;
     color: #2c3e50;
 }
@@ -240,4 +240,68 @@ footer {
 
 .btn-project:hover {
     background-color: #2980b9;
+}
+
+.project-section {
+    margin-bottom: 2rem;
+
+}
+
+.project-section p {
+    text-align: left !important;
+}
+
+
+.project-section h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Existing CSS omitted for brevity... */
+
+/* Base grid styling */
+.photo-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Specific utility classes for rows/columns */
+.photo-grid--2x4 {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.photo-grid--2x3 {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.photo-grid--1x2 {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Ensure each image is a square */
+.photo-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;  /* Makes each image square */
+    object-fit: cover;     /* Crops edges for non-square original aspect ratios */
+    border-radius: 4px;
+}
+
+/* If you want only *exactly* 2 rows no matter how many images,
+   you could also do something like: 
+   grid-template-rows: repeat(2, 1fr);
+   ...but typically you'd let it auto-flow to another row if there's more than 8 images.
+*/
+
+/* Single photo styling remains as is. */
+.photo-grid.single-photo img {
+    width: auto;
+    height: auto;
+    aspect-ratio: unset; /* Remove aspect-ratio so it doesn't force a square */
+    object-fit: contain;
+    max-width: 600px;
+    margin: 0 auto;
 }

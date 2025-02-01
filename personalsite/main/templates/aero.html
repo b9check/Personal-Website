@@ -2,9 +2,89 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    Aerodynamics
 {% endblock title %}
 
 {% block content %}
-    <h1>23e Aerodynamics & Composites Team Captain - Carnegie Mellon Racing</h1>
+    <h1>Aerodynamics &amp; Composites Team Captain – Carnegie Mellon Racing</h1>
+
+    <!-- Introduction Section -->
+    <section class="project-section">
+        <p>
+            I served as the Aerodynamics and Composites team captain for Carnegie Mellon Racing’s
+            2022–2023 electric race car, which finished second out of 69 teams at Formula SAE Michigan, 
+            first place amongst US teams.
+            Our six-person team was responsible for the design, analysis, manufacturing, and testing
+            of all aerodynamic components. This is probably my the project I'm most proud of as it really took
+            a full year of intense effort under tight timelines.
+
+        </p>
+    </section>
+
+    <!-- Design & Analysis Section -->
+    <section class="project-section">
+        <h2>Design &amp; Analysis</h2>
+        <p>
+            This project involved both structural and aerodynamic design.
+            We used Ansys Fluent to run computational fluid dynamics (CFD) simulations, achieving a
+            10% increase in downforce while reducing the mass of our aerodynamic package by 30%.
+            We also incorporated active aerodynamics (DRS) for the first time in team history,
+            allowing for adjustable angles of attack on our rear wing to optimize drag and downforce on the track.
+
+            For structural design, we utilized a rib-spar structure in both the front and rear wing, 
+            optimizing for the lightest possible design. Analysis was done with hand calcs and then in Ansys FEA,
+            including the use of topology optimization to make the lightest possible rib shape with AI.
+
+        </p>
+        <div class="photo-grid photo-grid--2x4">
+            <!-- 8 images for Design & Analysis -->
+            <img src="{% static 'images/Aero/AeroCAD.jpg' %}" alt="CAD">
+            <img src="{% static 'images/Aero/drs_gif.gif' %}" alt="DRS">
+            <img src="{% static 'images/Aero/AeroFEA.jpg' %}" alt="FEA">
+            <img src="{% static 'images/Aero/CFD.jpg' %}" alt="CFD">
+            <img src="{% static 'images/Aero/CorneringSim.jpg' %}" alt="Cornering Simulation">
+            <img src="{% static 'images/Aero/AirfoilCFD.jpg' %}" alt="2D CFD">
+            <img src="{% static 'images/Aero/Graph.png' %}" alt="Cl Graph">
+            <img src="{% static 'images/Aero/GapGraph.png' %}" alt="Drag Graph">
+        </div>
+    </section>
+
+    <!-- Manufacturing & Testing Section -->
+    <section class="project-section">
+        <h2>Manufacturing &amp; Testing</h2>
+        <p>
+            In manufacturing, we performed more than 20 carbon fiber layups, both wet and through resin infusion (pictured),
+            and machined parts (using a CNC, waterjet, mill, laser cutter, 3D printer, etc.) under tight
+            production schedules. This year's car was actually the earliest finished car in CMR's history
+            (done in March) giving us a full 2 months for tuning and driver practice.
+
+            Our comprehensive testing plan included downforce measurement via load cells in our suspension,
+            coast down tests to estimate our drag coefficient (graph pictured), flow visualization using strings (pictured), 
+            and real-world performance data collection, which validated our CFD predictions
+            and helped quantify the aerodynamic gains of our package. 
+        </p>
+        <div class="photo-grid photo-grid--2x3">
+            <!-- 5 images for MFG & Testing -->
+            <img src="{% static 'images/Aero/Infusion.png' %}" alt="Infusion Setup">
+            <img src="{% static 'images/Aero/MFGBond.png' %}" alt="Bonding Process">
+            <img src="{% static 'images/Aero/FlowVis.png' %}" alt="Flow Visualization">
+            <img src="{% static 'images/Aero/DRSGIF.gif' %}" alt="DRS Testing">
+            <img src="{% static 'images/Aero/testdata.png' %}" alt="Testing Data Plot">
+            <img src="{% static 'images/Aero/WindTunnel.jpg' %}" alt="Wind Tunnel">
+        </div>
+    </section>
+
+    <!-- Results & Impact Section -->
+    <section class="project-section">
+        <h2>Results</h2>
+        <p>
+            The car placed first in the US,
+            which made me happy enough to perform a load test of the rear wing with the weight of myself and the trophy (it passed).
+        </p>
+        <div class="photo-grid photo-grid--1x2">
+            <img src="{% static 'images/Aero/TeamPhoto_square.png' %}" alt="Team Photo">
+            <img src="{% static 'images/Aero/trophy_square.jpg' %}" alt="Trophy Photo">
+        </div>
+    </section>
+
 {% endblock content %}
