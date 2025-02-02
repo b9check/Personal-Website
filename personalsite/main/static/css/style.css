@@ -277,9 +277,15 @@ footer {
     grid-template-columns: repeat(3, 1fr);
 }
 
+
 .photo-grid--1x2 {
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(2, 1fr);
+}
+
+.photo-grid--1x3 {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 /* Ensure each image is a square */

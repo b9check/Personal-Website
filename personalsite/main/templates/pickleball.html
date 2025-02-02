@@ -2,9 +2,67 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    Pickleball Robot
 {% endblock title %}
 
 {% block content %}
-    <h1>Pickleball Trainer Robot</h1>
+    <h1>Robotic Pickleball Trainer</h1>
+    <section class="video-section">
+        <p>
+            Check out this video of the robot in action!
+        </p>
+        <video style="width: 80%;" controls>
+            <source src="{% static 'videos/Pickleball_Trainer.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <section class="project-section">
+        <p>
+            For my Senior Design Capstone at Carnegie Mellon University, I teamed up with four classmates to 
+            create a brand new approach to pickleball training. Our project focused on developing an innovative robotic 
+            trainer that challenges players with a dynamic, continuously interactive game experience.
+        </p>
+        
+        <p>
+            At the core of the system is a mobile platform—a repurposed, scaled-down Roomba—that we programmed using ROS 
+            (Robot Operating System). This allowed our robot to navigate the court reliably without relying on expensive sensors.
+        </p>
+        
+        <p>
+            The robot’s central feature is its ball-launching mechanism. We engineered a three-wheel launcher capable of 
+            delivering shots with adjustable speed, angle, and spin. This multi-axis control meant that each ball could
+            mimic a variety of playing conditions, challenging users to adapt and improve their game.
+        </p>
+        
+        <p>
+            A feature unique to our design is the robot's integrated collection net. After launching, the balls are returned by the player into 
+            the net, where they’re funneled back into the launcher. This not only ensures a smooth, continuous cycle of play, but also 
+            gives the player something to aim for when they're returning - challenging them more than a conventional ball launcher. 
+            The net is also detachable to make the robot more portable.
+
+            My one regret on the 
+            project is we should have made the net larger, as it was quite challenging to actually return it to the net.
+        </p>
+
+        <p>
+            I led the software and electrical design for the project, installing ROS on a Raspberry Pi to coordinate 
+            both the robot’s movement and ball-launching systems. I integrated, tested, and tuned three DC motors for
+            launching and a servo motor for ball feeding, ensuring precise timing and calibration throughout the system.
+        </p>
+        
+        <p>
+            The project culminated in a fully functional prototype that not only delivered an engaging user experience 
+            but also earned the “Best Overall” award at our final design expo. 
+        </p>
+        <div class="photo-grid photo-grid--1x3">
+            <!-- Images for feedback control & sensors -->
+            <img src="{% static 'images/Pickleball/Robot.jpeg' %}" alt="First Place Squad">
+            <img src="{% static 'images/PickleBot.png' %}" alt="Robot">
+            <img src="{% static 'images/Pickleball/Pickle_design.png' %}" alt="Robot Schematic">
+        </div>
+    </section>
+
+
 {% endblock content %}
+

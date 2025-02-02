@@ -2,9 +2,68 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    Robotic Hand
 {% endblock title %}
 
 {% block content %}
-    <h1>Robotic Hand</h1>
+    <h1>DeltaHand: A Dexterous Hand Using Delta Robots</h1>
+
+    <section class="project-section">
+        <p>
+            I contributed to the development of a cost-effective robotic hand that leverages 3D-printed delta 
+            robots for dexterous manipulation. This project, led by a PhD student in the Zoom Lab 
+            at Carnegie Mellon University, Zilin Si, aimed to create a simplified 
+            and modular alternative to traditional robotic hands, which are often expensive and complex to 
+            manufacture.
+        </p>
+        <div class="photo-grid photo-grid">
+            <img src="{% static 'images/DeltaHand/bananagif.gif' %}" alt="Experimental Setup">
+        </div>
+    </section>
+    <section class="project-section">
+        <h2>Tactile Sensing</h2>
+        <p>
+            A key focus of my work was integrating force sensing and feedback control to improve 
+            grasping precision and adaptability in real-world applications.
+            The robotic hand originally relied solely on a camera and inverse kinematics for object detection and 
+            manipulation. However, force sensing significantly enhances a robotic gripper’s capability by allowing 
+            it to detect object contact, regulate grip pressure, prevent object slipping, and avoid excessive force that could damage 
+            the gripper or objects. I selected and integrated a resistive force sensor into the fingertips, ensuring it 
+            measured only contact forces rather than unintended deformations in the robot’s structure. I then 
+            worked on calibrating the sensor against an external load cell to characterize its force readings.
+            With force sensing integrated, I developed a PID-based feedback control system to adjust grip 
+            strength dynamically. This gave the robot the capability to apply specific amount of pressure onto an
+            object when gripping it.
+        </p>
+        <div class="photo-grid photo-grid--1x2">
+            <!-- Images for feedback control & sensors -->
+            <img src="{% static 'images/DeltaHand/square_gif.gif' %}" alt="Control GIF">
+            <img src="{% static 'images/DeltaHand/sensor.png' %}" alt="Force Sensor Integration">
+        </div>
+    </section>
+    <section class="project-section">
+        <h2>Structural Design</h2>
+        <p>
+            In parallel, I worked on the structural design of the robotic gripper to ensure flexible yet 
+            stable joint articulation. The delta fingers were designed as single-piece 3D-printed structures, 
+            combining TPU for compliant joints and PLA for structural stiffness. These materials were chosen 
+            because they have similar melting temperatures but significantly different elastic properties, 
+            allowing for embedded stiffening while maintaining flexibility. Additionally, printing each delta 
+            finger as a single unit greatly simplified manufacturing, reducing assembly complexity and 
+            improving consistency.
+        </p>
+        <div class="photo-grid photo-grid--1x2">
+            <!-- Images for feedback control & sensors -->
+            <img src="{% static 'images/DeltaHand.png' %}" alt="Delta Hand">
+            <img src="{% static 'images/DeltaHand/deltaCAD.png' %}" alt="2 Material 3D print">
+        </div>
+    </section>
+    <section class="project-section">
+        <p>
+            This work resulted in a functional, low-cost robotic hand capable of grasping and manipulating a wide 
+            range of objects with improved force sensitivity. By integrating real-time force feedback and optimizing 
+            structural design, the project demonstrated a novel approach to simplified, adaptive robotic grasping.
+        </p>
+    </section>
+
 {% endblock content %}
