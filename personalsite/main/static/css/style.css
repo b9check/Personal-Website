@@ -288,6 +288,11 @@ footer {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.photo-grid--1x4 {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
 /* Ensure each image is a square */
 .photo-grid img {
     width: 100%;
@@ -308,6 +313,19 @@ footer {
     height: auto;
     aspect-ratio: unset; /* Remove aspect-ratio so it doesn't force a square */
     object-fit: contain;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
+}
+
+/* Style for each figure within the photo grid */
+.photo-grid figure {
+    margin: 0;               /* Reset default margin */
+    text-align: center;      /* Center the image and caption */
+}
+
+/* Style for the image caption */
+.photo-grid figcaption {
+    margin-top: 0.5rem;      /* Space between the image and caption */
+    font-size: 0.9rem;       /* Adjust font size as needed */
+    color: #2c3e50;          /* Match your text color */
 }

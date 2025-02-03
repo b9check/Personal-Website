@@ -10,29 +10,84 @@
 
     <section class="project-section">
         <p>
-            I led the complete redesign of the uprights to integrate lightweight carbon fiber wheels into our 4-wheel-drive hub motor powertrain. The uprights form the critical connection between the powertrain and the suspension, supporting brake calipers, motors, and bearings (which, in turn, support the wheel hubs), and ultimately linking the powertrain assembly to the suspension and chassis.
+            I led the complete redesign of the uprights to integrate lightweight carbon fiber wheels into our 4-wheel-drive 
+            hub motor powertrain. The uprights are the critical structural element of the powertrain asssembly; they
+            support the brake calipers, motors, and bearings (which, in turn, support the wheel hubs), house our planetary gearset,
+            and ultimately link the powertrain assembly to the suspension and chassis.
         </p>
         <p>
-            Our redesign shifted from an internal mounting configuration to one in which the hubs mount externally around the upright. This change necessitated a two-part design (green and pink components in the image below), replacing the previous single-piece configuration.
+            Our redesign shifted from an internal mounting configuration to one in which the hubs mount externally around the 
+            upright. This change necessitated a two-part design, replacing the previous single-piece configuration.
+        </p>
+        <div class="photo-grid photo-grid--1x3">
+            <figure>
+              <img src="{% static 'images/Uprights/FrontUpright.png' %}" alt="Front Upright">
+              <figcaption>Front Upright</figcaption>
+            </figure>
+            <figure>
+              <img src="{% static 'images/Uprights/RearUpright.png' %}" alt="Rear Upright">
+              <figcaption>Rear Upright</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'images/Uprights/UprightGIF.gif' %}" alt="Upright GIF">
+                <figcaption>Mounted Upright</figcaption>
+            </figure>
+        </div>
+        <div class="photo-grid single-photo">
+            <figure>
+                <img src="{% static 'images/Uprights/PTExploded.png' %}" alt="PT Exploded">
+                <figcaption>Exploded View of the Full 2024 Powertrain Architecture</figcaption>
+            </figure>
+        </div>
+              
+
+        <p>
+            Through detailed hand calculations and finite element analysis, I achieved a 5% mass reduction in the 
+            uprights while enhancing the design for manufacturability. Overall, the powertrain's mass was reduced by 15% 
+            (approximately 5.6 kg) across all four wheels—a significant improvement considering that unsprung mass 
+            (mass not supported by the suspension) greatly impacts vehicle performance. The images below show FEA results
+            for one of the load cases.
+        </p>
+
+        <div class="photo-grid photo-grid--1x2">
+            <figure>
+                <img src="{% static 'images/Uprights/Deformation.png' %}" alt="FEA Deformation">
+              <figcaption>FEA Deformation</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'images/Uprights/Stress.png' %}" alt="FEA Stress">
+              <figcaption>FEA Stress</figcaption>
+            </figure>
+        </div>
+        
+        <p>
+            The parts were 5-axis CNC machined by a sponsor. I produced detailed drawings and worked closely with the 
+            sponsor to ensure that the parts were toleranced appropriately.
         </p>
         <p>
-            Through detailed hand calculations and finite element analysis, I achieved a 5% mass reduction in the uprights while enhancing the design for manufacturability. Overall, the powertrain's mass was reduced by 15% (approximately 5.6 kg) across all four wheels—a significant improvement considering that unsprung mass (mass not supported by the suspension) greatly impacts vehicle performance.
-        </p>
-        <p>
-            The parts were 5-axis CNC machined by a sponsor. I produced detailed drawings and worked closely with the sponsor to ensure that the parts were toleranced appropriately.
-        </p>
-        <p>
-            Beyond the structural improvements, the project involved close collaboration with the suspension and vehicle dynamics teams to optimize attachment points and maintain the desired vehicle dynamics. This effort also helped improve interteam communication compared to previous years.
+            Beyond the structural improvements, the project involved close collaboration with the suspension and 
+            vehicle dynamics teams to optimize attachment points and maintain the desired vehicle dynamics. 
+            This effort also helped improve interteam communication compared to previous years.
         </p>
         
         
-        <div class="photo-grid photo-grid--2x3">
-            <img src="{% static 'images/Uprights/FrontUpright.png' %}" alt="Front Upright">
-            <img src="{% static 'images/Uprights/RearUpright.png' %}" alt="Rear Upright">
-            <img src="{% static 'images/Uprights/UprightGIF.gif' %}" alt="Upright GIF">
-            <img src="{% static 'images/Uprights/Deformation.png' %}" alt="FEA Deformation">
-            <img src="{% static 'images/UprightOil.jpg' %}" alt="Upright with Oil">
-            <img src="{% static 'images/Uprights/UprightMounted.PNG' %}" alt="Camber Plates">
+        <div class="photo-grid photo-grid--1x4">
+            <figure>
+                <img src="{% static 'images/Uprights/GearsUpright.png' %}" alt="Gears in Upright">
+              <figcaption>Planetary Gearset in Upright</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'images/UprightOil.jpg' %}" alt="Upright with Oil">
+              <figcaption>Gear Oil in Upright</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'images/Uprights/UprightAssembly.jpg' %}" alt="PT Assembly">
+              <figcaption>Full Hub Motor Assembly</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'images/Uprights/UprightMounted.PNG' %}" alt="Camber Plates">
+              <figcaption>Upright on Car</figcaption>
+            </figure>
         </div>
     </section>
 {% endblock content %}

@@ -2,10 +2,51 @@
 {% load static %}
 
 {% block title %}
-    Resume
+  Rethink the Rink
 {% endblock title %}
 
 {% block content %}
-    <h1>Rethink the Rink</h1>
+  <h1>
+    Rethink the Rink Make-a-thon<br>
+    with the Pittsburgh Penguins (2023)
+  </h1>
+  <section class="project-section">
+    <p>
+      At the Rethink the Rink make-a-thon, teams were tasked with re-designing the shot blocker to better protect players’ 
+      ankles. We discovered that many professional and amateur players avoided traditional shot blockers because they were 
+      bulky and uncomfortable, specifically noting how they didn't like putting anything on the outside of their skate.
+      In response, we developed an integrated internal design that became part of the sock.
+    </p>
+
+    <div class="photo-grid photo-grid--1x2">
+        <figure>
+            <img src="{% static 'images/RTR/RTRPoster.jpg' %}" alt="Poster">
+            <figcaption>Design Poster</figcaption>
+        </figure>
+        <figure>
+            <img src="{% static 'images/RTR/RTRProtoSquare.jpg' %}" alt="Prototype">
+            <figcaption>"Shock Sock" Prototype</figcaption>
+        </figure>
+    </div>
+    <p>
+      Our design featured a scale-like pattern (inspired by Nike Elite socks), molded pads, and a foam interior that conforms to any foot shape—offering 
+      enhanced comfort without compromising protection. After selecting materials and doing impact testing to validate its shock 
+      absorption capabilities, our prototype was presented to a panel of players, Penguins executives, and engineers, winning
+      best overall design.
+    </p>
     
+    <section class="video-section">
+      <p>Here's a video about the make-a-thon</p>
+      <div style="position: relative; width: 80%; padding-bottom: 56.25%; margin: auto;">
+        <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/QogLY59yvNA?si=ZRv_dycnZ5aliN0H" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+  </section>
 {% endblock content %}
