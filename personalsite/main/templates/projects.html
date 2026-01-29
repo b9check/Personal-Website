@@ -8,72 +8,109 @@
 {% block content %}
 <div class="projects-section container">
     <h1>My Projects</h1>
+
+    <!-- Software & Robotics Section -->
+    <h2 class="category-header">Software & Robotics</h2>
     <div class="projects-grid">
-        <!-- Project Card 1 -->
+        <!-- HyperWatch -->
         <div class="project-card">
-            <img src="{% static 'images/racecartrophy.JPG' %}" alt="Project 1" class="project-img">
-            <h3>FSAE Aerodynamics</h3>
-            <p>Aerodynamics & Composites Captain for Carnegie Mellon Racing's 2023 racecar, which finished first in the US</p>
-            <a href="{% url 'aero' %}" class="btn-project">View Details</a>
+            <img src="{% static 'images/placeholder.svg' %}" alt="HyperWatch" class="project-img">
+            <h3>HyperWatch</h3>
+            <p>Project description coming soon.</p>
+            <a href="{% url 'hyperwatch' %}" class="btn-project">View Details</a>
         </div>
 
-        <!-- Project Card 2 -->
+        <!-- DragonDock -->
         <div class="project-card">
-            <img src="{% static 'images/UprightOilWide.jpg' %}" alt="Project 2" class="project-img">
-            <h3>FSAE Uprights</h3>
-            <p>Led re-design of uprights as part of a full powertrain architecture re-design for CMR's 2024 racecar</p>
-            <a href="{% url 'uprights' %}" class="btn-project">View Details</a>
+            <img src="{% static 'images/placeholder.svg' %}" alt="DragonDock" class="project-img">
+            <h3>DragonDock</h3>
+            <p>Project description coming soon.</p>
+            <a href="{% url 'dragondock' %}" class="btn-project">View Details</a>
         </div>
-        
-        <!-- Project Card 3 -->
+
+        <!-- Pickleball Robot -->
         <div class="project-card">
-            <img src="{% static 'images/PickleBot.png' %}" alt="Project 3" class="project-img">
+            <img src="{% static 'images/PickleBot.png' %}" alt="Pickleball Robot" class="project-img">
             <h3>Pickleball Robot</h3>
             <p>Built a pickleball robot to train me so I could stop losing to old ladies</p>
             <a href="{% url 'pickleball' %}" class="btn-project">View Details</a>
         </div>
 
-        <!-- Project Card 4 -->
+        <!-- Delta Hand -->
         <div class="project-card">
-            <img src="{% static 'images/racecartrophy.JPG' %}" alt="Project 4" class="project-img">
-            <h3>Magic Chess Board</h3>
-            <p>Have no friends? Bored of online chess? Use this physical chess board that autonomously plays against you!</p>
-            <a href="{% url 'chess' %}" class="btn-project">View Details</a>
-        </div>
-
-        <!-- Project Card 5 -->
-        <div class="project-card">
-            <img src="{% static 'images/racecartrophy.JPG' %}" alt="Project 5" class="project-img">
-            <h3>Deployable Satellite Sunshade</h3>
-            <p>A sunshade that deploys</p>
-            <a href="{% url 'sunshade' %}" class="btn-project">View Details</a>
-        </div>
-
-
-        <!-- Project Card 6 -->
-        <div class="project-card">
-            <img src="{% static 'images/Delta.png' %}" alt="Project 6" class="project-img">
+            <img src="{% static 'images/Delta.png' %}" alt="Delta Hand" class="project-img">
             <h3>Printable Robotic Hand</h3>
             <p>An inexpensive robotic hand design with tactile sensing</p>
             <a href="{% url 'deltahand' %}" class="btn-project">View Details</a>
         </div>
 
-
-        <!-- Project Card 7 -->
+        <!-- BCBETS -->
         <div class="project-card">
-            <img src="{% static 'images/RTRPrototype.jpg' %}" alt="Project 7" class="project-img">
-            <h3>The Shock Sock</h3>
-            <p>Ankle protector for hockey players that doesn't restrict motion</p>
-            <a href="{% url 'RTR' %}" class="btn-project">View Details</a>
-        </div>
-
-
-        <!-- ... up to Project Card 8 -->
-        <div class="project-card">
-            <img src="{% static 'images/DKLogo.png' %}" alt="Project 8" class="project-img">
+            <img src="{% static 'images/DKLogo.png' %}" alt="BCBETS" class="project-img">
             <h3>BCBETS.NET: Machine Learning for Sports Betting</h3>
             <p>Live evaluations of DraftKings moneyline bets using AI</p>
             <a href="{% url 'bcbets' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- CS 238 Stock Trading -->
+        <div class="project-card">
+            <img src="{% static 'images/placeholder.svg' %}" alt="CS 238 Stock Trading" class="project-img">
+            <h3>CS 238 Stock Trading</h3>
+            <p>Project description coming soon.</p>
+            <a href="{% url 'cs238' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- GPS Denied Navigation -->
+        <div class="project-card">
+            <img src="{% static 'images/placeholder.svg' %}" alt="GPS Denied Navigation" class="project-img">
+            <h3>GPS Denied Navigation (In Progress)</h3>
+            <p>Project description coming soon.</p>
+            <a href="{% url 'gps_navigation' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- CS 140E Bare-Metal OS -->
+        <div class="project-card">
+            <img src="{% static 'images/placeholder.svg' %}" alt="CS 140E Bare-Metal OS" class="project-img">
+            <h3>CS 140E Bare-Metal OS (In Progress)</h3>
+            <p>Project description coming soon.</p>
+            <a href="{% url 'cs140e' %}" class="btn-project">View Details</a>
+        </div>
+    </div>
+
+    <!-- Mechanical Section -->
+    <h2 class="category-header">Mechanical</h2>
+    <div class="projects-grid">
+        <!-- FSAE Aerodynamics -->
+        <div class="project-card">
+            <img src="{% static 'images/racecartrophy.JPG' %}" alt="FSAE Aerodynamics" class="project-img">
+            <h3>FSAE Aerodynamics</h3>
+            <p>Aerodynamics & Composites Captain for Carnegie Mellon Racing's 2023 racecar, which finished first in the US</p>
+            <a href="{% url 'aero' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- FSAE Uprights -->
+        <div class="project-card">
+            <img src="{% static 'images/UprightOilWide.jpg' %}" alt="FSAE Uprights" class="project-img">
+            <h3>FSAE Uprights</h3>
+            <p>Led re-design of uprights as part of a full powertrain architecture re-design for CMR's 2024 racecar</p>
+            <a href="{% url 'uprights' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- Deployable Sunshade -->
+        <div class="project-card">
+            <img src="{% static 'images/Deployed.png' %}" alt="Deployable Sunshade" class="project-img">
+            <h3>Deployable Sunshade for Space Telescope</h3>
+            <p>A multi-layer, foldable design for minimal launch volume</p>
+            <a href="{% url 'sunshade' %}" class="btn-project">View Details</a>
+        </div>
+
+        <!-- The Shock Sock -->
+        <div class="project-card">
+            <img src="{% static 'images/RTRPrototype.jpg' %}" alt="The Shock Sock" class="project-img">
+            <h3>The Shock Sock</h3>
+            <p>Collaborated with the Pittsburgh Penguins to make an ankle protector for hockey players that 
+                doesn't restrict motion</p>
+            <a href="{% url 'RTR' %}" class="btn-project">View Details</a>
         </div>
     </div>
 </div>

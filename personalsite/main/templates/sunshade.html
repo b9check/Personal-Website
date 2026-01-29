@@ -2,9 +2,103 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    Deployable Sunshade
 {% endblock title %}
 
 {% block content %}
-    <h1>Deployable Satellite Sunshade</h1>
+    <h1>Deployable Sunshade for NASA's Proposed LUVOIR</h1>
+
+    <section class="project-section">
+        <h2>Project Overview</h2>
+        <p>
+            Our team set out to design and prototype a three-layer deployable sunshade for NASA’s proposed LUVOIR telescope (
+            Large Ultraviolet Optical Infrared Surveyor). Once deployed, it blocks stray and unintended light while shielding 
+            the telescope’s instruments from thermal loads, ensuring a clear and stable environment for high-precision observations.
+            Each membrane layer is designed to stretch 20 m by 20 m and be spaced 10 cm apart in orbit, yet fit within a 
+            0.5 m × 0.5 m × 0.3 m stowed volume. That tight constraint—essentially minimizing launch volume—drove our entire 
+            approach. After exploring various concepts and iterating on folding methods, we arrived at a working scaled prototype 
+            that demonstrates the core functionality of our system, from the central hub to the coordinated membrane deployment.
+        </p>
+        <div class="photo-grid single-photo">
+            <figure>
+                <img src="{% static 'images/Sunshade/LUVOIR.png' %}" alt="PT Exploded">
+            </figure>
+        </div>
+        
+        <h2>Membrane Folding &amp; Integration</h2>
+        <p>
+            A key focus was developing a compact folding scheme so that all three membrane layers can stow around a 
+            central hub rather than being stacked on top of a larger, boxy framework. By folding each membrane along two 
+            main axes—first in a “Z” pattern, then wrapping the resulting strip around the hub—we achieved a highly 
+            space-efficient layout.
+
+            This central-hub approach leverages circular cross-sections to cut down on wasted space. 
+            Traditional designs might pack each membrane layer on a flat 0.5 m × 0.5 m panel, but our 
+            careful geometry calculations showed that rolling and folding around a smaller cylindrical 
+            volume yields a more minimal stowed footprint.
+        </p>
+        
+        <div class="photo-grid single-photo">
+            <figure>
+                <img src="{% static 'images/Sunshade/FullFolding.png' %}" alt="PT Exploded">
+            </figure>
+        </div>
+        <div class="photo-grid single-photo">
+            <figure>
+                <img src="{% static 'images/Sunshade/MembranesSide2.png' %}" alt="PT Exploded">
+            </figure>
+        </div>
+        
+        <h2>Novel Boom Deployment Mechanism</h2> 
+        <p> 
+            Our deployment occurs in two steps. First, a spring-loaded telescoping 
+            mechanism elevates the booms and spacer bars above the membranes, preparing them for deployment. Next, our novel 
+            boom deployment mechanism takes over. 
+        </p> 
+        <p> 
+            Because our membranes are folded around the hub in multiple layers, 
+            sequential deployment is essential—one set of corners must fully uncoil before the other. Instead of using two motors 
+            (which would exceed our stowed volume limits), I designed a sequential deployment system using coaxial booms. This design 
+            features two nested cylindrical hubs, each with a one-way bearing. A single motor drives both hubs in opposite directions, 
+            uncoiling one set of booms first and then reversing to deploy the second set. The telescoping mast raises the assembly
+             clear of the hub to prevent interference. 
+        </p> 
+        <p> 
+            In a flight design, each boom would be constructed from TRAC-style tapes that uncoil radially and remain stiff when 
+            extended. A small spacing bar at the tip of each boom attaches to the membrane corners, ensuring a precise 10 cm gap 
+            between layers. For our prototype, we used simple tape measure cross-sections. 
+        </p>
+
+        <div class="photo-grid single-photo">
+            <figure>
+                <img src="{% static 'images/Sunshade/deployment.png' %}" alt="PT Exploded">
+            </figure>
+        </div>
+
+        <div class="photo-grid photo-grid--1x3">
+            <figure>
+                <img src="{% static 'images/Sunshade/TelescopeCAD.png' %}" alt="CAD">
+            </figure>
+            <figure>
+                <img src="{% static 'images/Sunshade/prototype1.png' %}" alt="DRS">
+            </figure>
+            <figure>
+                <img src="{% static 'images/Sunshade/prototype2.png' %}" alt="DRS">
+            </figure>
+        </div>
+
+        <h2>Prototype Deployment Video</h2>
+        <section class="video-section">
+            <p>
+                Here is the video of our prototype deployment!
+            </p>
+            <video style="width: 80%;" controls>
+                <source src="{% static 'videos/DeploymentDemoVideo.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    </section>
+
+
 {% endblock content %}
+

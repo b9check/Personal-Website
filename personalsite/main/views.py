@@ -26,9 +26,6 @@ def uprights(request):
 def pickleball(request):
     return render(request, 'pickleball.html')
 
-def chess(request):
-    return render(request, 'chess.html')
-
 def sunshade(request):
     return render(request, 'sunshade.html')
 
@@ -40,4 +37,19 @@ def RTR(request):
 
 def bcbets(request):
     return render(request, 'bcbets.html')
+
+def hyperwatch(request):
+    return render(request, 'hyperwatch.html')
+
+def dragondock(request):
+    return render(request, 'dragondock.html')
+
+def cs238(request):
+    return render(request, 'cs238.html')
+
+def gps_navigation(request):
+    return render(request, 'gps_navigation.html')
+
+def cs140e(request):
+    return render(request, 'cs140e.html')
 

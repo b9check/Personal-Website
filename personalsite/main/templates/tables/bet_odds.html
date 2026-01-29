@@ -1,0 +1,90 @@
+<table id="betOddsTable" style="width: 100%; margin: 0 auto; text-align: left;">
+    <caption style="caption-side: bottom; text-align: center; font-weight: bold; padding: 10px 0;">
+        Bet Odds Summary: Displays matchups, odds, best bet, and model confidence for each game. Bets were pulled live from DraftKings' website by a scraping algorithm.
+    </caption>
+    <thead style="text-align: center;">
+        <tr>
+            <th>Matchup</th>
+            <th>Line 1</th>
+            <th>Line 2</th>
+            <th>Best Bet</th>
+            <th>Confidence</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CHI @ WAS</td>
+            <td>CHI -122</td>
+            <td>WAS +102</td>
+            <td>CHI -122</td>
+            <td>0.17050735427216301</td>
+        </tr>
+        <tr>
+            <td>ORL @ PHI</td>
+            <td>ORL +250</td>
+            <td>PHI -310</td>
+            <td>ORL +250</td>
+            <td>0.1460983253099084</td>
+        </tr>
+        <tr>
+            <td>BKN @ NY</td>
+            <td>BKN +425</td>
+            <td>NY -575</td>
+            <td>BKN +425</td>
+            <td>0.0629396275666112</td>
+        </tr>
+        <tr>
+            <td>IND @ CLE</td>
+            <td>IND +130</td>
+            <td>CLE -155</td>
+            <td>IND +130</td>
+            <td>0.10795619800109924</td>
+        </tr>
+        <tr>
+            <td>CHA @ BOS</td>
+            <td>CHA +245</td>
+            <td>BOS -298</td>
+            <td>BOS -298</td>
+            <td>0.30071211341475035</td>
+        </tr>
+        <tr>
+            <td>MIL @ OKC</td>
+            <td>MIL +625</td>
+            <td>OKC -950</td>
+            <td>MIL +625</td>
+            <td>0.15267591987163992</td>
+        </tr>
+        <tr>
+            <td>LA L @ MEM</td>
+            <td>LA L -1100</td>
+            <td>MEM +700</td>
+            <td>MEM +700</td>
+            <td>0.13643982328988002</td>
+        </tr>
+        <tr>
+            <td>PHO @ SAC</td>
+            <td>PHO -198</td>
+            <td>SAC +164</td>
+            <td>SAC +164</td>
+            <td>0.12104969199639287</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Only target rows in the bet odds table using its unique ID
+    var rows = document.querySelectorAll("#betOddsTable tbody tr");
+    rows.forEach(function(row) {
+        var confCell = row.querySelector("td:last-child");
+        var confVal = parseFloat(confCell.textContent);
+        if (confVal > 0.15) {
+            row.style.backgroundColor = "lightgreen";
+        } else if (confVal >= 0.08 && confVal <= 0.15) {
+            row.style.backgroundColor = "lightyellow";
+        } else {
+            row.style.backgroundColor = "lightcoral";
+        }
+    });
+});
+</script>

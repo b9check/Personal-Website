@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Brian Check | Aerospace Engineer{% endblock %}
 
 {% block content %}
-<section>
-    <h1>Welcome to My Personal Site</h1>
-    <p>I am Brian Check, an engineer passionate about building innovative solutions. Explore my projects and learn more about me.</p>
-    <a href="{% url 'projects' %}">View My Projects</a>
+<section class="hero">
+    <!-- Video Background -->
+    <video id="hero-video" autoplay muted playsinline class="hero-video">
+        <source src="{% static 'videos/hero.mp4' %}" type="video/mp4">
+    </video>
+    
+    <!-- Dark Overlay -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>Brian Check</h1>
+        <p class="hero-tagline">Aerospace Engineer | Stanford MS Student</p>
+        <div class="hero-buttons">
+            <a href="{% url 'projects' %}" class="btn-primary">View Projects</a>
+            <a href="{% url 'resume' %}" class="btn-secondary">Resume</a>
+        </div>
+    </div>
 </section>
+
+<script>
+    // More reliable video looping for large files
+    const video = document.getElementById('hero-video');
+    
+    video.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    });
+    
+    // Ensure video plays (some browsers block autoplay)
+    video.play().catch(function(error) {
+        console.log('Autoplay prevented:', error);
+    });
+</script>
 {% endblock %}
-{% load static %}
-<img 
-                          src="{% static 'images/racecartrophy.JPG' %}" 
-                          alt="LinkedIn" 
-                          class="social-icon"
-                        >

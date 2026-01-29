@@ -2,9 +2,96 @@
 {% load static %}
 
 {% block title %}
-    Resume
+    BCBETS
 {% endblock title %}
 
 {% block content %}
-    <h1>BCBETS: Automated Machine Learning Analysis of DraftKings Moneylines</h1>
+    <h1>Live Analysis of DraftKings' NBA Moneyline Bets with Machine Learning</h1>
+
+    <section class="project-section">
+        <p>
+        <strong>
+            NOTE: I live in California now, where online sports betting is illegal, so this project/site is no longer active. 
+            The tables displayed are from previous moments in time when I lived in Pennsylvania. Here is a link to the GitHub 
+            repository containing the code: <a href="https://github.com/b9check/bcbets-full" target="_blank">GitHub Repository</a>.
+        </strong>
+        <p>
+        Welcome to BC Bets! This website uses machine learning to identify favorable NBA money line bets. 
+        It pulls all pregame lines listed on DraftKings' website every hour and evaluates them. For each game, 
+        it picks the better of the two lines and calculates a “confidence”, with higher confidence corresponding to a better bet.
+        The goal of course is to make money!
+        </p>
+
+        <h2>Doesn't the House Always Win?</h2>
+        <p>
+            The central idea behind this methodology is that sportsbooks do not necessarily set moneylines based on how 
+            likely each team is to win, but rather based on how much bettors have placed on either team. This means that due 
+            to the large number of people who simply place bets on teams they like or on intuition (“this one's a lock bro I swear”), 
+            a good predictive model can be used to give consistent positive long-term returns. 
+        </p>
+        
+        <h2>Creating a Model</h2>
+        <p>The first step in this process is creating a model that can predict the win percentages for two teams that will face 
+            each other based on their stats. The process for creating the model is broken into the following steps:</p>
+        <ol class="model-steps">
+            <li>
+                <strong>Data Collection:</strong> Statistics from every modern NBA game are available publicly. Data from the past 10 years was used to train the model.
+            </li>
+            <li>
+                <strong>Feature Engineering:</strong> This critical step identifies/computes stats that are used to train the model. After testing several combinations and reviewing existing models, the following three stats were used:
+                <ol type="a">
+                    <li><strong>Team ELO:</strong> A rating system that reflects a team's win percentage adjusted by the strength of schedule.</li>
+                    <li><strong>Plus-Minus over the past 10 games:</strong> Captures recent performance trends as teams improve or worsen over the season.</li>
+                    <li><strong>Home/Away Team:</strong> Since the home team wins 63% of the time, this factor is key and fully independent of other stats.</li>
+                </ol>
+            </li>
+            <li>
+                <strong>Model Selection:</strong> The method requires predicting win probabilities rather than just winners and losers. After testing various models, a linear regression model performed best.
+            </li>
+        </ol>
+        <p>
+        The model trained on these input stats predicts NBA game outcomes correctly 68% of the time. This may sound 
+        low, but underdogs generally do win roughly 30% of the time, and the best currently existing model I could 
+        find by FiveThirtyEight is correct 70% of the time. And again, the main advantage of this model is not that it 
+        predicts a binary game outcome, but that it gives a quantifiable win percentage for each team. You may be able to 
+        predict game winners well, but how do you know if +340 or -500 is a better bet for a particular game? Or if they're 
+        both bad bets? That's what really matters in sports betting at the end of the day.
+        </p>
+
+        <div class="team-stats">
+            {% include "tables/teamStats.html" %}
+        </div>
+
+        <h2>Identifying Good Bets</h2> 
+        <p> 
+        Okay now we have a model, but how exactly is it used? The key step in assessing the quality of a moneyline is computing what 
+        a “fair” win percentage is for a given moneyline is. For example, if a team has a 50% chance to win, +100 is a fair line 
+        (you will exactly break even in the long term). If a team has a 33% chance to win, then +150 is a fair line. You can compute
+         a fair win percentage for any given moneyline. Once you have this, you simply compare the sportsbook's fair win percentage 
+         to the win percentage predicted by the model. If the sportsbook's fair win percentage is 50%, and the model gives that team 
+         a win percentage of 55%, then this is a good bet with a confidence of 5%. 
+        This site actively pulls all moneyline bets from DraftKings' website (updated every hour, pregame lines only) and goes 
+        through this evaluation process on each individual bet. For each game, it picks the better bet (higher confidence), and 
+        displays that along with the confidence in the “Predictions” tab of this site. Note that some lines will have negative 
+        confidence, which simply means both bets are bad, and it just picked the less negative one.
+        </p> 
+
+        <div class="bet-odds">
+            {% include "tables/bet_odds.html" %}
+        </div>
+
+        <p>
+        And that's it! I would use the above table to place my bets.
+        </p>
+
+        <h2>Weaknesses</h2>
+        <p> In reality, you cannot simply rely on all green bets because there are events that the model cannot immediately 
+            account for. Since the features take time to recalibrate, factors such as player injuries, key players sitting 
+            out at the end of a season, or recent trades can drastically alter a team's performance before the model has a 
+            chance to adjust. </p> 
+            
+        <p> So, some level of active management is still required—follow the news and be cautious 
+            of green bets where a major change has occurred in the past few games. Allow the model time 
+            (typically over the next 5-10 games) to incorporate these changes. </p>
+    </section>
 {% endblock content %}
