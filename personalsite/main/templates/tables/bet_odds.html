@@ -1,8 +1,8 @@
-<table id="betOddsTable" style="width: 100%; margin: 0 auto; text-align: left;">
-    <caption style="caption-side: bottom; text-align: center; font-weight: bold; padding: 10px 0;">
+<table id="betOddsTable" class="example-table">
+    <caption style="caption-side: bottom; text-align: center; padding: 10px 0; color: var(--text-secondary); font-size: 0.9rem;">
         Bet Odds Summary: Displays matchups, odds, best bet, and model confidence for each game. Bets were pulled live from DraftKings' website by a scraping algorithm.
     </caption>
-    <thead style="text-align: center;">
+    <thead>
         <tr>
             <th>Matchup</th>
             <th>Line 1</th>
@@ -78,12 +78,18 @@ document.addEventListener("DOMContentLoaded", function() {
     rows.forEach(function(row) {
         var confCell = row.querySelector("td:last-child");
         var confVal = parseFloat(confCell.textContent);
+        // Format confidence as percentage
+        confCell.textContent = (confVal * 100).toFixed(1) + "%";
+        // Dark theme compatible colors
         if (confVal > 0.15) {
-            row.style.backgroundColor = "lightgreen";
+            row.style.backgroundColor = "rgba(34, 197, 94, 0.2)";  // Green
+            row.style.borderLeft = "3px solid #22c55e";
         } else if (confVal >= 0.08 && confVal <= 0.15) {
-            row.style.backgroundColor = "lightyellow";
+            row.style.backgroundColor = "rgba(234, 179, 8, 0.15)";  // Yellow
+            row.style.borderLeft = "3px solid #eab308";
         } else {
-            row.style.backgroundColor = "lightcoral";
+            row.style.backgroundColor = "rgba(239, 68, 68, 0.15)";  // Red
+            row.style.borderLeft = "3px solid #ef4444";
         }
     });
 });

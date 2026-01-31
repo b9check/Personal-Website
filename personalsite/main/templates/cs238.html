@@ -2,14 +2,1046 @@
 {% load static %}
 
 {% block title %}
-    CS 238 Stock Trading
+    StockMDP | Algorithmic Trading with MDPs
 {% endblock title %}
 
 {% block content %}
-    <h1>CS 238 Stock Trading</h1>
-    <section class="project-section">
-        <p>
-            Project details coming soon.
-        </p>
+<style>
+    /* StockMDP Page Specific Styles */
+    .smdp-page {
+        --smdp-bg-primary: #0a0f0d;
+        --smdp-bg-secondary: #0d1512;
+        --smdp-bg-card: #111916;
+        --smdp-bg-card-hover: #151f1b;
+        --smdp-text-primary: #e8ede9;
+        --smdp-text-secondary: #8fa396;
+        --smdp-text-muted: #5a6b5f;
+        --smdp-accent-green: #00d26a;
+        --smdp-accent-green-dim: #00a854;
+        --smdp-accent-red: #ff4757;
+        --smdp-accent-gold: #ffd700;
+        --smdp-accent-cyan: #00d4aa;
+        --smdp-border-color: #1e2a24;
+        --smdp-gradient-green: linear-gradient(135deg, #00d26a 0%, #00a854 100%);
+        font-family: 'Space Grotesk', sans-serif;
+        background: var(--smdp-bg-primary);
+        color: var(--smdp-text-primary);
+        margin: -60px -20px 0 -20px;
+        padding: 0;
+    }
+
+    /* Ticker tape animation */
+    .smdp-ticker-tape {
+        background: var(--smdp-accent-green);
+        color: var(--smdp-bg-primary);
+        padding: 8px 0;
+        overflow: hidden;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .smdp-ticker-content {
+        display: flex;
+        animation: smdp-ticker 30s linear infinite;
+        white-space: nowrap;
+    }
+
+    .smdp-ticker-content span {
+        padding: 0 40px;
+    }
+
+    .smdp-ticker-content .up { color: #004d25; }
+    .smdp-ticker-content .down { color: #8b0000; }
+
+    @keyframes smdp-ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* Hero Section */
+    .smdp-hero {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 40px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .smdp-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(ellipse at 20% 50%, rgba(0, 210, 106, 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(0, 168, 84, 0.05) 0%, transparent 40%);
+        pointer-events: none;
+    }
+
+    .smdp-grid-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            linear-gradient(var(--smdp-border-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--smdp-border-color) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .smdp-hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .smdp-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: var(--smdp-text-secondary);
+        margin-bottom: 30px;
+    }
+
+    .smdp-hero-badge .dot {
+        width: 8px;
+        height: 8px;
+        background: var(--smdp-accent-green);
+        border-radius: 50%;
+        animation: smdp-pulse 2s infinite;
+    }
+
+    @keyframes smdp-pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .smdp-hero h1 {
+        font-family: 'Instrument Serif', serif;
+        font-size: clamp(40px, 7vw, 80px);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .smdp-hero h1 .highlight {
+        color: var(--smdp-accent-green);
+        font-style: italic;
+    }
+
+    .smdp-hero-subtitle {
+        font-size: 18px;
+        color: var(--smdp-text-secondary);
+        max-width: 600px;
+        margin-bottom: 40px;
+    }
+
+    .smdp-hero-stats {
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    .smdp-stat {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .smdp-stat-value {
+        font-family: 'DM Mono', monospace;
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--smdp-accent-green);
+    }
+
+    .smdp-stat-label {
+        font-size: 12px;
+        color: var(--smdp-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    .smdp-hero-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+
+    .smdp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .smdp-btn-primary {
+        background: var(--smdp-gradient-green);
+        color: var(--smdp-bg-primary);
+    }
+
+    .smdp-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 210, 106, 0.3);
+        color: var(--smdp-bg-primary);
+    }
+
+    .smdp-btn-secondary {
+        background: var(--smdp-bg-card);
+        color: var(--smdp-text-primary);
+        border: 1px solid var(--smdp-border-color);
+    }
+
+    .smdp-btn-secondary:hover {
+        background: var(--smdp-bg-card-hover);
+        border-color: var(--smdp-accent-green);
+        color: var(--smdp-text-primary);
+    }
+
+    /* Section styles */
+    .smdp-section {
+        padding: 80px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .smdp-section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+
+    .smdp-section-number {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        color: var(--smdp-accent-green);
+    }
+
+    .smdp-section-title {
+        font-family: 'Instrument Serif', serif;
+        font-size: 36px;
+        font-weight: 400;
+    }
+
+    /* Overview Section */
+    .smdp-overview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+
+    .smdp-overview-text p {
+        color: var(--smdp-text-secondary);
+        font-size: 16px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .smdp-overview-text p:first-of-type::first-letter {
+        font-family: 'Instrument Serif', serif;
+        font-size: 50px;
+        float: left;
+        line-height: 1;
+        margin-right: 10px;
+        color: var(--smdp-accent-green);
+    }
+
+    /* MDP Visualization */
+    .smdp-mdp-visual {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 16px;
+        padding: 30px;
+    }
+
+    .smdp-mdp-visual h4 {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: var(--smdp-text-muted);
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .smdp-mdp-diagram {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .smdp-state-node {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .smdp-state-node:hover {
+        transform: scale(1.1);
+    }
+
+    .smdp-state-node.oversold {
+        background: linear-gradient(135deg, rgba(0, 210, 106, 0.2), rgba(0, 168, 84, 0.1));
+        border: 2px solid var(--smdp-accent-green);
+    }
+
+    .smdp-state-node.neutral {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+        border: 2px solid var(--smdp-accent-gold);
+    }
+
+    .smdp-state-node.overbought {
+        background: linear-gradient(135deg, rgba(255, 71, 87, 0.2), rgba(255, 71, 87, 0.1));
+        border: 2px solid var(--smdp-accent-red);
+    }
+
+    .smdp-state-node .label {
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
+    .smdp-state-node .rsi {
+        font-size: 9px;
+        color: var(--smdp-text-muted);
+    }
+
+    .smdp-action-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .smdp-action-btn {
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        border: 1px solid var(--smdp-border-color);
+        background: var(--smdp-bg-secondary);
+        color: var(--smdp-text-secondary);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .smdp-action-btn.buy:hover {
+        background: rgba(0, 210, 106, 0.2);
+        border-color: var(--smdp-accent-green);
+        color: var(--smdp-accent-green);
+    }
+
+    .smdp-action-btn.sell:hover {
+        background: rgba(255, 71, 87, 0.2);
+        border-color: var(--smdp-accent-red);
+        color: var(--smdp-accent-red);
+    }
+
+    .smdp-action-btn.hold:hover {
+        background: rgba(255, 215, 0, 0.2);
+        border-color: var(--smdp-accent-gold);
+        color: var(--smdp-accent-gold);
+    }
+
+    /* Technical Architecture */
+    .smdp-architecture-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .smdp-arch-card {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 12px;
+        padding: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .smdp-arch-card:hover {
+        border-color: var(--smdp-accent-green);
+        transform: translateY(-5px);
+    }
+
+    .smdp-arch-card h3 {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        color: var(--smdp-accent-green);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
+    }
+
+    .smdp-arch-card h3::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--smdp-accent-green);
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .smdp-arch-card p {
+        color: var(--smdp-text-secondary);
+        font-size: 13px;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .smdp-arch-card code {
+        font-family: 'DM Mono', monospace;
+        background: var(--smdp-bg-secondary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 11px;
+        color: var(--smdp-accent-cyan);
+    }
+
+    /* Formula Section */
+    .smdp-formula-section {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 16px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .smdp-formula-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        color: var(--smdp-accent-green);
+        margin-bottom: 20px;
+    }
+
+    .smdp-formula {
+        font-family: 'Instrument Serif', serif;
+        font-size: 24px;
+        font-style: italic;
+        text-align: center;
+        padding: 25px;
+        background: var(--smdp-bg-secondary);
+        border-radius: 8px;
+        margin-bottom: 25px;
+        overflow-x: auto;
+    }
+
+    .smdp-formula-explanation {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .smdp-formula-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .smdp-formula-item code {
+        font-family: 'DM Mono', monospace;
+        color: var(--smdp-accent-green);
+        font-size: 13px;
+        min-width: 55px;
+    }
+
+    .smdp-formula-item span {
+        color: var(--smdp-text-secondary);
+        font-size: 13px;
+    }
+
+    /* Results Section */
+    .smdp-results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .smdp-result-card {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .smdp-result-card-header {
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--smdp-border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .smdp-result-card-header h4 {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .smdp-stock-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .smdp-stock-badge.success {
+        background: rgba(0, 210, 106, 0.2);
+        color: var(--smdp-accent-green);
+    }
+
+    .smdp-stock-badge.warning {
+        background: rgba(255, 71, 87, 0.2);
+        color: var(--smdp-accent-red);
+    }
+
+    .smdp-result-card-body {
+        padding: 20px;
+    }
+
+    .smdp-result-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        background: var(--smdp-bg-secondary);
+    }
+
+    .smdp-result-placeholder {
+        height: 220px;
+        background: linear-gradient(135deg, var(--smdp-bg-secondary), var(--smdp-bg-card));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--smdp-text-muted);
+        font-size: 13px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Aggregate Results */
+    .smdp-aggregate-card {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .smdp-aggregate-header {
+        padding: 25px;
+        border-bottom: 1px solid var(--smdp-border-color);
+    }
+
+    .smdp-aggregate-header h3 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 24px;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    .smdp-aggregate-header p {
+        color: var(--smdp-text-secondary);
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .smdp-aggregate-body {
+        padding: 25px;
+    }
+
+    .smdp-policy-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .smdp-policy-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: var(--smdp-text-secondary);
+        width: 110px;
+        text-align: right;
+    }
+
+    .smdp-policy-bar-track {
+        flex: 1;
+        height: 22px;
+        background: var(--smdp-bg-secondary);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .smdp-policy-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+    }
+
+    .smdp-policy-bar-fill.optimal {
+        background: var(--smdp-gradient-green);
+    }
+
+    .smdp-policy-bar-fill.naive {
+        background: var(--smdp-text-muted);
+    }
+
+    .smdp-policy-value {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        color: var(--smdp-text-muted);
+        width: 45px;
+    }
+
+    /* Key Findings */
+    .smdp-findings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .smdp-finding-card {
+        background: var(--smdp-bg-card);
+        border: 1px solid var(--smdp-border-color);
+        border-radius: 12px;
+        padding: 25px;
+    }
+
+    .smdp-finding-card.success {
+        border-left: 3px solid var(--smdp-accent-green);
+    }
+
+    .smdp-finding-card.warning {
+        border-left: 3px solid var(--smdp-accent-gold);
+    }
+
+    .smdp-finding-card h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .smdp-finding-card p {
+        color: var(--smdp-text-secondary);
+        font-size: 13px;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    /* Footer */
+    .smdp-footer {
+        border-top: 1px solid var(--smdp-border-color);
+        padding: 50px 40px;
+        margin-top: 80px;
+    }
+
+    .smdp-footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .smdp-footer-info h4 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .smdp-footer-info p {
+        color: var(--smdp-text-secondary);
+        font-size: 13px;
+    }
+
+    .smdp-footer-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .smdp-footer-links a {
+        color: var(--smdp-text-secondary);
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.3s ease;
+    }
+
+    .smdp-footer-links a:hover {
+        color: var(--smdp-accent-green);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .smdp-overview-grid,
+        .smdp-results-grid,
+        .smdp-formula-explanation,
+        .smdp-findings-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .smdp-architecture-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .smdp-hero-stats {
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .smdp-page {
+            margin: -60px -10px 0 -10px;
+        }
+
+        .smdp-section {
+            padding: 50px 20px;
+        }
+
+        .smdp-hero {
+            padding: 60px 20px;
+        }
+
+        .smdp-hero h1 {
+            font-size: 32px;
+        }
+
+        .smdp-architecture-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .smdp-mdp-diagram {
+            flex-direction: column;
+        }
+
+        .smdp-footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .smdp-policy-label {
+            width: 80px;
+            font-size: 10px;
+        }
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="smdp-page">
+    <!-- Ticker Tape -->
+    <div class="smdp-ticker-tape">
+        <div class="smdp-ticker-content">
+            <span>NVDA <span class="up">+312.4%</span></span>
+            <span>AAPL <span class="up">+45.2%</span></span>
+            <span>TSLA <span class="up">+89.7%</span></span>
+            <span>MSFT <span class="up">+52.1%</span></span>
+            <span>AMZN <span class="up">+67.3%</span></span>
+            <span>GOOGL <span class="up">+38.9%</span></span>
+            <span>JNJ <span class="down">-12.4%</span></span>
+            <span>META <span class="up">+124.5%</span></span>
+            <span>NVDA <span class="up">+312.4%</span></span>
+            <span>AAPL <span class="up">+45.2%</span></span>
+            <span>TSLA <span class="up">+89.7%</span></span>
+            <span>MSFT <span class="up">+52.1%</span></span>
+            <span>AMZN <span class="up">+67.3%</span></span>
+            <span>GOOGL <span class="up">+38.9%</span></span>
+            <span>JNJ <span class="down">-12.4%</span></span>
+            <span>META <span class="up">+124.5%</span></span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="smdp-hero">
+        <div class="smdp-grid-bg"></div>
+        <div class="smdp-hero-content">
+            <div class="smdp-hero-badge">
+                <span class="dot"></span>
+                Stanford AA 228 · Decision Making Under Uncertainty
+            </div>
+            <h1>Algorithmic Trading<br>with <span class="highlight">Markov Decision</span><br>Processes</h1>
+            <p class="smdp-hero-subtitle">A model-based reinforcement learning approach to stock trading that outperforms naive strategies using RSI-based state classification and value iteration.</p>
+            
+            <div class="smdp-hero-links">
+                <a href="https://github.com/b9check/stockmdp" class="smdp-btn smdp-btn-primary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View Code
+                </a>
+                <a href="{% static 'pdfs/AA228_Final_Project.pdf' %}" class="smdp-btn smdp-btn-secondary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Read Paper
+                </a>
+            </div>
+        </div>
     </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="smdp-section">
+        <div class="smdp-section-header">
+            <span class="smdp-section-number">01</span>
+            <h2 class="smdp-section-title">Project Overview</h2>
+        </div>
+
+        <div class="smdp-overview-grid">
+            <div class="smdp-overview-text">
+                <p>This project develops a low-frequency algorithmic trading strategy designed for investment firms with significant market influence. Unlike high-frequency trading, our approach operates on weekly timeframes, making decisions that can meaningfully impact stock prices.</p>
+                <p>We frame the trading problem as a Markov Decision Process, using the Relative Strength Index (RSI) to classify market states and computing optimal policies through value iteration. The model-based approach leverages historical data from 2000-2020 to construct explicit transition and reward matrices.</p>
+                <p>Key insight: While model-free methods like Q-learning require massive datasets, stock trading's limited data (~365 points/year) makes model-based approaches more practical and interpretable.</p>
+            </div>
+
+            <div class="smdp-mdp-visual">
+                <h4>MDP State Space</h4>
+                <div class="smdp-mdp-diagram">
+                    <div class="smdp-state-node oversold">
+                        <span class="label">OVERSOLD</span>
+                        <span class="rsi">RSI &lt; μ - σ</span>
+                    </div>
+                    <div class="smdp-state-node neutral">
+                        <span class="label">NEUTRAL</span>
+                        <span class="rsi">μ - σ ≤ RSI ≤ μ + σ</span>
+                    </div>
+                    <div class="smdp-state-node overbought">
+                        <span class="label">OVERBOUGHT</span>
+                        <span class="rsi">RSI &gt; μ + σ</span>
+                    </div>
+                </div>
+                <div class="smdp-action-row">
+                    <div class="smdp-action-btn buy">BUY</div>
+                    <div class="smdp-action-btn hold">HOLD</div>
+                    <div class="smdp-action-btn sell">SELL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section id="architecture" class="smdp-section">
+        <div class="smdp-section-header">
+            <span class="smdp-section-number">02</span>
+            <h2 class="smdp-section-title">Technical Approach</h2>
+        </div>
+
+        <div class="smdp-architecture-grid">
+            <div class="smdp-arch-card">
+                <h3>State Classification</h3>
+                <p>States derived from <code>RSI</code> (Relative Strength Index), a momentum indicator measuring price change magnitude. Weekly RSI values categorized into three states based on statistical thresholds (mean ± std).</p>
+            </div>
+            <div class="smdp-arch-card">
+                <h3>Action Classification</h3>
+                <p>Actions labeled based on deviation from expected closing price using 12-week trend regression. <code>Buy</code> if price exceeds +0.5σ, <code>Sell</code> if below -0.5σ, <code>Hold</code> within ±0.25σ.</p>
+            </div>
+            <div class="smdp-arch-card">
+                <h3>Transition Matrix T</h3>
+                <p>Captures <code>P(s'|s,a)</code> — probability of transitioning between states given an action. Built from observed state-action-state frequencies in training data.</p>
+            </div>
+            <div class="smdp-arch-card">
+                <h3>Reward Matrix R</h3>
+                <p>Records expected <code>% price change</code> for each state-action pair. Computed as average observed reward for each (state, action) combination.</p>
+            </div>
+            <div class="smdp-arch-card">
+                <h3>Value Iteration</h3>
+                <p>Iteratively computes optimal utility <code>U(s)</code> for each state until convergence. Discount factor γ=0.9 balances immediate vs. future rewards.</p>
+            </div>
+            <div class="smdp-arch-card">
+                <h3>Policy Extraction</h3>
+                <p>Optimal policy π*(s) extracted by selecting action maximizing expected utility. Results in one of <code>3³ = 27</code> possible policies across the three states.</p>
+            </div>
+        </div>
+
+        <!-- Formula Section -->
+        <div class="smdp-formula-section">
+            <div class="smdp-formula-title">BELLMAN OPTIMALITY EQUATION</div>
+            <div class="smdp-formula">
+                a*(s) = argmax<sub>a</sub> [ R(s,a) + γ Σ<sub>s'</sub> T(s,a,s') · U(s') ]
+            </div>
+            <div class="smdp-formula-explanation">
+                <div class="smdp-formula-item">
+                    <code>a*(s)</code>
+                    <span>Optimal action for state s</span>
+                </div>
+                <div class="smdp-formula-item">
+                    <code>R(s,a)</code>
+                    <span>Expected reward for taking action a in state s</span>
+                </div>
+                <div class="smdp-formula-item">
+                    <code>γ = 0.9</code>
+                    <span>Discount factor balancing immediate vs. future rewards</span>
+                </div>
+                <div class="smdp-formula-item">
+                    <code>T(s,a,s')</code>
+                    <span>Probability of transitioning to s' after taking a in s</span>
+                </div>
+                <div class="smdp-formula-item">
+                    <code>U(s')</code>
+                    <span>Utility of transitioning to state s'</span>
+                </div>
+                <div class="smdp-formula-item">
+                    <code>Σ<sub>s'</sub></code>
+                    <span>Sum over all possible successor states</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="smdp-section">
+        <div class="smdp-section-header">
+            <span class="smdp-section-number">03</span>
+            <h2 class="smdp-section-title">Results &amp; Analysis</h2>
+        </div>
+
+        <div class="smdp-results-grid">
+            <div class="smdp-result-card">
+                <div class="smdp-result-card-header">
+                    <h4>NVDA (NVIDIA)</h4>
+                    <span class="smdp-stock-badge success">Optimal = Best</span>
+                </div>
+                <div class="smdp-result-card-body">
+                    <img src="{% static 'images/CS238/NVDA_policy_histogram.png' %}" alt="NVDA Policy Histogram">
+                </div>
+            </div>
+            <div class="smdp-result-card">
+                <div class="smdp-result-card-header">
+                    <h4>JNJ (Johnson &amp; Johnson)</h4>
+                    <span class="smdp-stock-badge warning">Optimal Underperformed</span>
+                </div>
+                <div class="smdp-result-card-body">
+                    <img src="{% static 'images/CS238/JNJ_policy_histogram.png' %}" alt="JNJ Policy Histogram">
+                </div>
+            </div>
+        </div>
+
+        <!-- Aggregate Results -->
+        <div class="smdp-aggregate-card">
+            <div class="smdp-aggregate-header">
+                <h3>Aggregate Performance: Top 20 Stocks by Market Cap</h3>
+                <p>Normalized returns averaged across AAPL, MSFT, GOOGL, AMZN, NVDA, TSLA, META, and 13 others</p>
+            </div>
+            <div class="smdp-aggregate-body">
+                <div class="smdp-policy-bar">
+                    <span class="smdp-policy-label">Optimal</span>
+                    <div class="smdp-policy-bar-track">
+                        <div class="smdp-policy-bar-fill optimal" style="width: 100%;"></div>
+                    </div>
+                    <span class="smdp-policy-value">0.52</span>
+                </div>
+                <div class="smdp-policy-bar">
+                    <span class="smdp-policy-label">sell-buy-hold</span>
+                    <div class="smdp-policy-bar-track">
+                        <div class="smdp-policy-bar-fill naive" style="width: 85%;"></div>
+                    </div>
+                    <span class="smdp-policy-value">0.44</span>
+                </div>
+                <div class="smdp-policy-bar">
+                    <span class="smdp-policy-label">sell-hold-buy</span>
+                    <div class="smdp-policy-bar-track">
+                        <div class="smdp-policy-bar-fill naive" style="width: 82%;"></div>
+                    </div>
+                    <span class="smdp-policy-value">0.43</span>
+                </div>
+                <div class="smdp-policy-bar">
+                    <span class="smdp-policy-label">buy-buy-buy</span>
+                    <div class="smdp-policy-bar-track">
+                        <div class="smdp-policy-bar-fill naive" style="width: 60%;"></div>
+                    </div>
+                    <span class="smdp-policy-value">0.31</span>
+                </div>
+                <div class="smdp-policy-bar">
+                    <span class="smdp-policy-label">hold-sell-sell</span>
+                    <div class="smdp-policy-bar-track">
+                        <div class="smdp-policy-bar-fill naive" style="width: 15%;"></div>
+                    </div>
+                    <span class="smdp-policy-value">0.08</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="smdp-findings-grid">
+            <div class="smdp-finding-card success">
+                <h4>✓ Momentum-Driven Stocks</h4>
+                <p>High-volatility, momentum-driven stocks (NVDA, TSLA) showed strongest performance under optimal policy. RSI-based state classification captures short-term sentiment effectively for speculative assets.</p>
+            </div>
+            <div class="smdp-finding-card success">
+                <h4>✓ Aggregate Outperformance</h4>
+                <p>Optimal policy ranked #1 across all 27 possible policies when averaged over 20 stocks, validating the model-based approach for portfolio-level decision making.</p>
+            </div>
+            <div class="smdp-finding-card warning">
+                <h4>⚠ Stable Stock Limitations</h4>
+                <p>Low-volatility stocks (JNJ, PG) showed weak or negative returns under optimal policy. Prices driven by fundamentals rather than momentum—RSI less predictive.</p>
+            </div>
+            <div class="smdp-finding-card warning">
+                <h4>⚠ Data Constraints</h4>
+                <p>Limited historical data (~1000 weekly observations) constrains transition matrix accuracy. COVID-era data excluded to avoid anomalous patterns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="smdp-footer">
+        <div class="smdp-footer-content">
+            <div class="smdp-footer-info">
+                <h4>StockMDP</h4>
+                <p>Stanford AA 228 Final Project · Brian Check &amp; Adam Ctverak · Fall 2024</p>
+            </div>
+            <div class="smdp-footer-links">
+                <a href="https://github.com/b9check/stockmdp" target="_blank">GitHub</a>
+                <a href="{% static 'pdfs/AA228_Final_Project.pdf' %}" target="_blank">Paper PDF</a>
+                <a href="https://aa228.stanford.edu" target="_blank">Course Page</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // State node hover effect
+    document.querySelectorAll('.smdp-state-node').forEach(node => {
+        node.addEventListener('mouseenter', () => {
+            document.querySelectorAll('.smdp-state-node').forEach(n => {
+                if (n !== node) n.style.opacity = '0.5';
+            });
+        });
+        node.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.smdp-state-node').forEach(n => {
+                n.style.opacity = '1';
+            });
+        });
+    });
+</script>
 {% endblock content %}

@@ -6,6 +6,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="project-page">
     <h1>Deployable Sunshade for NASA's Proposed LUVOIR</h1>
 
     <section class="project-section">
@@ -88,17 +89,12 @@
         </div>
 
         <h2>Prototype Deployment Video</h2>
-        <section class="video-section">
-            <p>
-                Here is the video of our prototype deployment!
-            </p>
-            <video style="width: 80%;" controls>
-                <source src="{% static 'videos/DeploymentDemoVideo.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </section>
+        <p>Here is the video of our prototype deployment!</p>
+        <video class="project-video" controls>
+            <source src="{% static 'videos/DeploymentDemoVideo.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </section>
-
-
+</div>
 {% endblock content %}
 

@@ -6,10 +6,9 @@
 {% endblock title %}
 
 {% block content %}
-  <h1>
-    Rethink the Rink Make-a-thon
-    with the Pittsburgh Penguins (Won Best Overall)
-  </h1>
+<div class="project-page">
+  <h1>Rethink the Rink Make-a-thon — Pittsburgh Penguins (Won Best Overall)</h1>
+  
   <section class="project-section">
     <p>
       At the 2023 Rethink the Rink make-a-thon, teams were tasked with re-designing the shot blocker to better protect players' 
@@ -35,18 +34,16 @@
       best overall design.
     </p>
     
-    <section class="video-section">
-      <p>Here's a video about the make-a-thon:</p>
-      <div style="position: relative; width: 80%; padding-bottom: 56.25%; margin: auto;">
-        <iframe width="560" height="315" 
-                src="https://www.youtube.com/embed/QogLY59yvNA?si=ZRv_dycnZ5aliN0H" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen>
-        </iframe>
-      </div>
-    </section>
+    <p>Here's a video about the make-a-thon:</p>
+    <div class="project-video-container">
+      <iframe src="https://www.youtube.com/embed/QogLY59yvNA?rel=0" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+      </iframe>
+    </div>
   </section>
+</div>
 {% endblock content %}

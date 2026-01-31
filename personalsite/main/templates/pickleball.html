@@ -6,12 +6,12 @@
 {% endblock title %}
 
 {% block content %}
+<div class="project-page">
     <h1>Robotic Pickleball Trainer</h1>
-    <section class="video-section">
-        <p>
-            Check out this video of the robot in action!
-        </p>
-        <video style="width: 80%;" controls>
+    
+    <section class="project-section">
+        <p>Check out this video of the robot in action!</p>
+        <video class="project-video" controls>
             <source src="{% static 'videos/Pickleball_Trainer.mp4' %}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -56,13 +56,11 @@
             but also earned the “Best Overall” award at our final design expo. 
         </p>
         <div class="photo-grid photo-grid--1x3">
-            <!-- Images for feedback control & sensors -->
             <img src="{% static 'images/Pickleball/Robot.jpeg' %}" alt="First Place Squad">
             <img src="{% static 'images/PickleBot.png' %}" alt="Robot">
             <img src="{% static 'images/Pickleball/Pickle_design.png' %}" alt="Robot Schematic">
         </div>
     </section>
-
-
+</div>
 {% endblock content %}
 

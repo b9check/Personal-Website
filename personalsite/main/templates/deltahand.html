@@ -6,6 +6,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="project-page">
     <h1>DeltaHand: A Dexterous Hand Using Delta Robots</h1>
 
     <section class="project-section">
@@ -16,7 +17,7 @@
             and modular alternative to traditional robotic hands, which are often expensive and complex to 
             manufacture.
         </p>
-        <div class="photo-grid photo-grid">
+        <div class="photo-grid single-photo">
             <img src="{% static 'images/DeltaHand/bananagif.gif' %}" alt="Experimental Setup">
         </div>
     </section>
@@ -65,5 +66,5 @@
             structural design, the project demonstrated a novel approach to simplified, adaptive robotic grasping.
         </p>
     </section>
-
+</div>
 {% endblock content %}

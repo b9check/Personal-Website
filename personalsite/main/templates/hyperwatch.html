@@ -6,10 +6,334 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>HyperWatch</h1>
-    <section class="project-section">
-        <p>
-            Project details coming soon.
-        </p>
+    <!-- Hero Section -->
+    <section class="hw-hero" style="background-image: url('{% static 'images/HyperWatch/Strato-hero.png' %}');">
+        <div class="hw-hero-overlay"></div>
+        <div class="hw-hero-content">
+            <h1>HyperWatch</h1>
+            <p class="hw-hero-tagline">Stratospheric tracking for hypersonic missile defense</p>
+        </div>
+        <div class="hw-hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="hw-scroll-indicator"></div>
+        </div>
     </section>
+
+    <!-- Overview -->
+    <section class="hw-section">
+        <div class="hw-container">
+            <p class="hw-intro">
+                HyperWatch began as a class project, evolved into a venture-backed company, and became my 
+                full-time job for five months. I was the sole engineer.
+            </p>
+
+            <div class="hw-video-feature">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/LAb0t6lSU8M?rel=0" title="Explainer Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p class="hw-video-caption">Explainer: What is HyperWatch and why it matters</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Opportunity -->
+    <section class="hw-section hw-section-alt">
+        <div class="hw-container">
+            <h2>The Opportunity</h2>
+            
+            <div class="hw-two-col">
+                <div class="hw-col">
+                    <h3>The Problem</h3>
+                    <p>
+                        China's hypersonic glide vehicles fly above Mach 5 and maneuver unpredictably at low altitudes, 
+                        evading traditional radar and satellite tracking. Ground-based radars are blocked by Earth's curvature. 
+                        Space-based systems suffer from latency, poor resolution, and coverage gaps.
+                    </p>
+                </div>
+                <div class="hw-col">
+                    <h3>The Solution</h3>
+                    <p>
+                        HyperWatch deploys infrared sensing payloads on long-endurance stratospheric balloons at 
+                        20-30 km altitude — above weather and horizon limits, at 1/50th the altitude and 1% the cost 
+                        of space-based sensors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hw-pitch-deck">
+                <h3>Pitch Deck</h3>
+                <iframe src="https://docs.google.com/presentation/d/1iqfn3P0c-2Kp2-CVLtLqcKZyecisyVkH/embed?start=false&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Journey -->
+    <section class="hw-section">
+        <div class="hw-container">
+            <h2>The Journey</h2>
+
+            <div class="hw-journey-phase">
+                <div class="hw-phase-header">
+                    <span class="hw-phase-date">March - June 2025</span>
+                    <h3>Customer Discovery</h3>
+                </div>
+                <p>
+                    HyperWatch started in Stanford's Hacking for Defense, a course focused on intense customer discovery 
+                    in the defense space. Over 10 weeks, our team of five conducted 107 interviews across the Space Force, 
+                    MDA, defense primes, and startups. We identified a gap no one was exploiting: the stratosphere.
+                </p>
+                <a href="https://www.youtube.com/watch?v=VqlbPgT0PTw" class="hw-link" target="_blank">
+                    Watch H4D Final Presentation
+                </a>
+            </div>
+
+            <div class="hw-journey-phase">
+                <div class="hw-phase-header">
+                    <span class="hw-phase-date">June - September 2025</span>
+                    <h3>Incubation &amp; Fundraising</h3>
+                </div>
+                <p>
+                    Accepted to Defense Innovation Unit's DISF-C incubator, winning $80k while simultaneously 
+                    working full-time at Vast Space. After the program, I refined the pitch, built early demos, and 
+                    raised $250k in venture funding. My cofounder departed at the end of summer, and I continued as 
+                    sole engineer.
+                </p>
+            </div>
+
+            <div class="hw-journey-phase">
+                <div class="hw-phase-header">
+                    <span class="hw-phase-date">September 2025 - January 2026</span>
+                    <h3>Building</h3>
+                </div>
+                <p class="hw-build-summary">Six flight tests. Two stratospheric launches. One working system.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Tests -->
+    <section class="hw-section hw-section-dark">
+        <div class="hw-container">
+            <h2>Development Timeline</h2>
+            
+            <div class="hw-test-grid">
+                <div class="hw-test-card">
+                    <div class="hw-test-image">
+                        <img src="{% static 'images/HyperWatch/ft1.png' %}" alt="Flight Test 1">
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Flight Test 1</h4>
+                        <p>Raspberry Pi camera payload on tethered balloon. First attempt at computer vision tracking — proved stability was the core challenge.</p>
+                        <a href="https://www.youtube.com/watch?v=NEFLz9dHljM" class="hw-test-link" target="_blank">Watch Video</a>
+                    </div>
+                </div>
+
+                <div class="hw-test-card">
+                    <div class="hw-test-image">
+                        <img src="{% static 'images/HyperWatch/ft2.png' %}" alt="Flight Test 2">
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Flight Test 2</h4>
+                        <p>Low-cost thermal sensor with camera. Ground-based computer vision validated, but platform stability remained an issue.</p>
+                        <a href="https://www.youtube.com/watch?v=aEnkogoNTbs" class="hw-test-link" target="_blank">Watch Video</a>
+                    </div>
+                </div>
+
+                <div class="hw-test-card hw-test-featured">
+                    <div class="hw-test-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/iCk2ei-Y3XM?rel=0" title="Flight Test 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Flight Test 3</h4>
+                        <p>Mojave desert campaign with model rockets. Upgraded payload hardware. Equipment failed, but captured compelling footage for investors.</p>
+                    </div>
+                </div>
+
+                <div class="hw-test-card">
+                    <div class="hw-test-image">
+                        <img src="{% static 'images/HyperWatch/ft4.png' %}" alt="Flight Test 4">
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Flight Test 4</h4>
+                        <p>Upgraded infrared sensor with model rockets. Data collection campaign that validated the tracking algorithm.</p>
+                        <a href="https://www.youtube.com/watch?v=p6frVDhMXmM" class="hw-test-link" target="_blank">Watch Video</a>
+                    </div>
+                </div>
+
+                <div class="hw-test-card hw-test-featured">
+                    <div class="hw-test-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bJLCV8Ej1FQ?rel=0" title="Stratospheric Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Stratospheric Launch</h4>
+                        <p>Simple payload to 20+ km altitude. Validated the complete launch and recovery process. First attempt failed when commercial GPS cut out at altitude — a hard lesson learned.</p>
+                    </div>
+                </div>
+
+                <div class="hw-test-card">
+                    <div class="hw-test-image">
+                        <img src="{% static 'images/HyperWatch/ft5.png' %}" alt="Prototype V5">
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Prototype V5</h4>
+                        <p>FLIR Hadron thermal camera with gimbal in clear enclosure. Rapid build for Aerostar partnership meeting and Founders Inc demo day.</p>
+                        <a href="https://www.youtube.com/watch?v=ZyFnLF33kqc" class="hw-test-link" target="_blank">Watch Video</a>
+                    </div>
+                </div>
+
+                <div class="hw-test-card">
+                    <div class="hw-test-image">
+                        <img src="{% static 'images/HyperWatch/ft6.png' %}" alt="Final System">
+                    </div>
+                    <div class="hw-test-content">
+                        <h4>Final System</h4>
+                        <p>Complete integrated system: FLIR Hadron, gimbal, custom PCB, full ROS 2 autonomy stack. Achieved 165-meter thermal track on target drone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Final System -->
+    <section class="hw-section">
+        <div class="hw-container">
+            <h2>The Final System</h2>
+
+            <div class="hw-system-diagrams">
+                <figure class="hw-diagram">
+                    <img src="{% static 'images/HyperWatch/System Hardware Block Diagram.jpg' %}" alt="Hardware Block Diagram">
+                    <figcaption>Hardware Architecture</figcaption>
+                </figure>
+                <figure class="hw-diagram">
+                    <img src="{% static 'images/HyperWatch/paylaod.jpeg' %}" alt="Final Payload">
+                    <figcaption>Integrated Payload</figcaption>
+                </figure>
+            </div>
+
+            <figure class="hw-diagram hw-diagram-wide">
+                <img src="{% static 'images/HyperWatch/software_03_state_machine.png' %}" alt="Software State Machine">
+                <figcaption>Software State Machine</figcaption>
+            </figure>
+
+            <div class="hw-specs">
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Compute</span>
+                    <span class="hw-spec-value">ROS 2 stack on Jetson Nano, ESP32 motor control</span>
+                </div>
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Sensors</span>
+                    <span class="hw-spec-value">FLIR Hadron EO/IR thermal camera, Gremsy gimbal</span>
+                </div>
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Power</span>
+                    <span class="hw-spec-value">Custom PCB with low-voltage disconnect, dual DC-DC converters</span>
+                </div>
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Navigation</span>
+                    <span class="hw-spec-value">Dual-GNSS, IMU, radio telemetry</span>
+                </div>
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Scanning</span>
+                    <span class="hw-spec-value">Stepper motor, slip ring assembly</span>
+                </div>
+                <div class="hw-spec-item">
+                    <span class="hw-spec-label">Structure</span>
+                    <span class="hw-spec-value">Aluminum sheet metal and carbon fiber primary structure, 3D printed secondary structure</span>
+                </div>
+            </div>
+
+            <!-- Featured Demo Video -->
+            <div class="hw-demo-video">
+                <h3>IRST Tracking Demo</h3>
+                <p class="hw-demo-subtitle">165-meter thermal track on target drone</p>
+                <div class="hw-video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Z0M_Gz8DEQg?rel=0" title="IRST Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results / Metrics -->
+    <section class="hw-section hw-section-alt">
+        <div class="hw-container">
+            <h2>By The Numbers</h2>
+            
+            <div class="hw-metrics">
+                <div class="hw-metric">
+                    <span class="hw-metric-value">107</span>
+                    <span class="hw-metric-label">Customer Interviews</span>
+                </div>
+                <div class="hw-metric">
+                    <span class="hw-metric-value">$330k</span>
+                    <span class="hw-metric-label">Total Raised</span>
+                </div>
+                <div class="hw-metric">
+                    <span class="hw-metric-value">6</span>
+                    <span class="hw-metric-label">Flight Tests</span>
+                </div>
+                <div class="hw-metric">
+                    <span class="hw-metric-value">165m</span>
+                    <span class="hw-metric-label">Tracking Range</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="hw-section">
+        <div class="hw-container">
+            <h2>Outcome</h2>
+            <div class="hw-outcome-text">
+                <p>
+                    I pursued partnerships with Airbus and Aerostar to bid on an MDA contract for high-altitude 
+                    infrared tracking. That opportunity didn't materialize due to factors outside our control.
+                </p>
+                <p>
+                    After evaluating the path forward — classification barriers, defense procurement timelines, 
+                    and competitive dynamics — I made the decision to wind down the company and return capital to investors.
+                </p>
+            </div>
+
+            <div class="hw-takeaways">
+                <h3>What I Walked Away With</h3>
+                <ul>
+                    <li>End-to-end experience building a defense hardware startup from concept to field-validated prototype</li>
+                    <li>Deep understanding of DoD customer discovery and defense procurement</li>
+                    <li>Technical expertise in autonomous tracking systems, embedded software, and flight hardware</li>
+                    <li>A system that actually worked</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="hw-section hw-section-dark">
+        <div class="hw-container">
+            <h2>Where It Was Built</h2>
+            <p class="hw-gallery-subtitle">Dorm rooms, garages, deserts, and everything in between.</p>
+            
+            <figure class="hw-gallery">
+                <img src="{% static 'images/HyperWatch/workspace_collage.jpg' %}" alt="HyperWatch workspaces">
+            </figure>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="hw-section">
+        <div class="hw-container">
+            <div class="hw-resources">
+                <a href="https://youtube.com/playlist?list=PLTSY1k0pNDopfdS37sOOaMPlIetAlH3kg&si=SHMsr8a0eIUWAITU" class="hw-resource-link" target="_blank">
+                    <span class="hw-resource-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </span>
+                    <span>All Demo Videos</span>
+                </a>
+
+                <a href="{% static 'pdfs/HyperWatch/whitepaper.pdf' %}" class="hw-resource-link" target="_blank">
+                    <span class="hw-resource-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </span>
+                    <span>Technical White Paper</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
 {% endblock content %}
